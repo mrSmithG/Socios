@@ -30,8 +30,10 @@
                     Remember me
                 </label>
             </div>
-            <button class="button is-block is-info is-large is-fullwidth">Login</button>
+            <button class="button is-block is-info is-medium  is-fullwidth">Login</button>
         </form>
+	<p>or</p>
+	<button class="button is-danger is-outlined  is-small"><a href="{{ url_for('auth.signup') }}"> Sign up</a> </button>
     </div>
 </div>
 {% endblock %}
