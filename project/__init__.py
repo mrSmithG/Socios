@@ -1,23 +1,24 @@
-
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_migrate import Migrate
+from config import config
 
-# init SQLAlchemy so we can use it later in our models 
 
 
 
 db = SQLAlchemy()
 
-def create_app():
+def create_app(config_name):
+    """ App factory """
     app = Flask(__name__)
 
-    app.config['SECRET_KEY'] = 'secret-key-goes-here'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
+    app.config.from_object(config[config_name])
+    config[config_name].init_app(app)
     
-
-
+    
     db.init_app(app)
+    Migrate(app, db)
 
 
     login_manager = LoginManager()

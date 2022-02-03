@@ -6,7 +6,7 @@ from . import db
 main = Blueprint('main', __name__)
 
 @main.route('/')
-def Sign_In_Or_Sign_Up():
+def sign_in_or_sign_up():
     return render_template('first_page.html')
 
 @main.route('/home')
@@ -18,5 +18,13 @@ def index():
 @login_required
 def profile():
     return render_template('profile.html', name=current_user.name)
+
+@main.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+@main.errorhandler(500)
+def internal_server_error(e):
+    return render_template('500.html'), 500
 
 
