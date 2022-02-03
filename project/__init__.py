@@ -18,7 +18,7 @@ def create_app(config_name):
     
     
     db.init_app(app)
-    Migrate(app, db)
+    Migrate(app, db, render_as_batch=True)
 
 
     login_manager = LoginManager()
