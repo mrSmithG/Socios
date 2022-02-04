@@ -1,0 +1,13 @@
+# Ignore virtual environment
+auth/
+
+# Ignore sqlite
+project/db.sqlite
+
+# Ignore caches
+project/__pycache__/
+
+# Ignore migrations
+migrations/
+
+__pycache__/
