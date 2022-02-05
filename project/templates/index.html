@@ -1,16 +1,11 @@
 {% extends "base.html" %}
 
-{% block title %} NewsFeed {% endblock title %}
+{% block title %}Socios | NewsFeed {% endblock title %}
 
-{% block content %}
-<h1 class="page-heading">
-	Your news feed !!!
-</h1>
-<h2 class="subtitle">
-
-</h2>
-<div>
-
-</div>
-
+{% block page_content %}
+{% if current_user.is_authenticated %}
+    {{ current_user.username }}
+{% else %} 
+    Stranger 
+{% endif %}! 
 {% endblock %}

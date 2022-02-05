@@ -1,16 +1,18 @@
-
-from flask import Blueprint, render_template
+from datetime import datetime
+from flask import render_template, session, redirect, url_for
+from . import main
+#from .forms import NameForm
 from flask_login import login_required, current_user
-from . import db
+from .. import db
+#from ..models import User
 
-main = Blueprint('main', __name__)
+
 
 @main.route('/')
 def sign_in_or_sign_up():
     return render_template('first_page.html')
 
-@main.route('/home')
-@login_required
+@main.route('/index')
 def index():
     return render_template('index.html')
 
@@ -26,5 +28,4 @@ def page_not_found(e):
 @main.errorhandler(500)
 def internal_server_error(e):
     return render_template('500.html'), 500
-
 
