@@ -4,7 +4,7 @@ from . import main
 #from .forms import NameForm
 from flask_login import login_required, current_user
 from .. import db
-#from ..models import User
+from ..models import User
 
 
 
@@ -16,10 +16,10 @@ def sign_in_or_sign_up():
 def index():
     return render_template('index.html')
 
-@main.route('/profile')
-@login_required
-def profile():
-    return render_template('profile.html', name=current_user.name)
+@main.route('/user/<username>')
+def profile(username):
+    user = User.query.filter_by(username=username).first_or_404()
+    return render_template('profile.html', user=user)
 
 @main.errorhandler(404)
 def page_not_found(e):

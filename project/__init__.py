@@ -5,8 +5,10 @@ from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_migrate import Migrate
+from flask_login import LoginManager
+
 from config import config
-from flask_login import LoginManager 
+
 
 
 bootstrap = Bootstrap()
@@ -30,18 +32,9 @@ def create_app(config_name):
     mail.init_app(app)
     moment.init_app(app)
     Migrate(app, db, render_as_batch=True)
+    mysql.init_app(app)
 
-
-    #login_manager = LoginManager()
-    #login_manager.login_view = 'auth.login'
     login_manager.init_app(app)
-
-    #from project.models import User
-
-    """ @login_manager.user_loader
-    def load_user(user_id):
-        
-        return User.query.get(int(user_id)) """
 
     # blueprint for auth routes in our app
     from .authentication import auth as auth_blueprint

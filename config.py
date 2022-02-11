@@ -10,8 +10,8 @@ class Config:
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     PROJECT_MAIL_SUBJECT_PREFIX = '[Socios]'
-    PROJECT_MAIL_SENDER = 'Socios Admin <flasky@example.com>'
-    FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
+    PROJECT_MAIL_SENDER = 'Socios Admin <socios@example.com>'
+    FLASKY_ADMIN = os.environ.get('Socios_ADMIN')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     
 
@@ -30,7 +30,8 @@ class TestingConfig(Config):
 
 class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') 
-
+    # remember to pip install pymsql
+    # enter 'mysql+pymsql://username:password@localhost/db_name
 
 config = {
     'development': DevelopmentConfig,
